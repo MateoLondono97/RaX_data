@@ -1,0 +1,86 @@
+# Figure 8 - Omega (spin-orbit) potential energy curves of RaS
+# Londono & Perez-Rios, "Electronic properties of the Radium-monochalcogenides
+# RaX (X = O,S,Se) and RaO+/- ions"
+#
+# Source files: Converged_pes/{X1S_0, a3P_0+, a3P_1, a3P_2, A1P_1, B1S_0}_norm_cm.txt
+# Energies already in cm^-1 in the source, referenced to the X1Sigma+_0+ minimum.
+#
+# ###################################################################
+# # PROVENANCE WARNING - THESE ARE NOT CALCULATION OUTPUT.          #
+# # They carry the signature of values read off a plot.  Replace    #
+# # them with the Pauli-Breit output before depositing.             #
+# ###################################################################
+#
+# The evidence:
+#   1. QUANTISATION.  In five of the six files every energy is an exact integer
+#      multiple of q = 3750/88 = 42.613636 cm^-1, to a relative deviation below
+#      1e-14.  Energies converted from hartree do not land on a rational lattice.
+#      a3Pi_0+ is the exception and lies off that lattice.
+#   2. NO COMMON GRID IN THE SOURCE.  The six states were sampled at slightly
+#      different internuclear distances - see the note on the R column below.
+#      A spin-orbit calculation diagonalises one matrix per geometry, so every
+#      state comes out on the same R grid, as the RaO files do.
+#   3. SPARSE, IRREGULAR SAMPLING.  17-19 points per state, unevenly spaced.
+#   4. SYSTEMATIC OFFSET.  Every minimum sits 13-22 cm^-1 below the Table VII
+#      value, and the X1Sigma+_0+ minimum falls at R = 2.651 A against 2.691 A
+#      published - 0.04 A out, far worse than the other five states.
+#
+# THE R COLUMN
+#   The six source files do not share an R grid, so one had to be built.  The
+#   108 sampled distances fall into 19 well-separated groups: within a group the
+#   values span at most 0.0053 A, while neighbouring groups are an order of
+#   magnitude further apart, and no state contributes two points to any group.
+#   That is the scatter expected of one nominal distance read six times, so each
+#   group is one row here and column 1 is the group mean.  The largest departure
+#   of any state's own R from the tabulated value is 0.0029 A.  ENERGIES ARE
+#   UNCHANGED - every value below is reproduced exactly as supplied, with no
+#   interpolation.  Cells where a state has no point in that group are 'nan'
+#   (6 of 114).
+#
+# Columns
+#   1  R              nominal internuclear separation   [Angstrom]
+#   2  X1Sigma+_0+    [cm^-1]
+#   3  a3Pi_0+        [cm^-1]
+#   4  a3Pi_1         [cm^-1]
+#   5  a3Pi_2         [cm^-1]
+#   6  A1Pi_1         [cm^-1]
+#   7  B1Sigma+_0+    [cm^-1]
+#
+# The rows of the source X1S_0 file were not sorted by R (the R = 3.704 point
+# preceded R = 3.503); they are sorted here.
+#
+# Per-state summary, against Table VII of the paper:
+#   state          n   Rmin   Re pub |     Emin    Te pub | on q-lattice | nan
+#   X1Sigma+_0+   19  2.651   2.691 |       0.0      0.00 |         yes |  0
+#   a3Pi_0+       18  3.001   3.010 |    7978.7   7999.12 |          NO |  1
+#   a3Pi_1        18  3.001   2.996 |    7670.5   7692.73 |         yes |  1
+#   a3Pi_2        17  3.001   3.006 |    7627.8   7650.27 |         yes |  2
+#   A1Pi_1        18  3.001   3.019 |    8224.4   8239.94 |         yes |  1
+#   B1Sigma+_0+   18  2.701   2.709 |   12741.5  12754.25 |         yes |  1
+#
+# Note: the RaS Omega manifold here has six states.  The RaO calculation
+# resolves seven, the extra one being a3Pi_0-, which has no counterpart file
+# for RaS and no row in Table VII for either molecule.
+#
+# Extracted 2026-09-25
+#
+# R(Angstrom)    X1Sigma+_0+        a3Pi_0+         a3Pi_1         a3Pi_2         A1Pi_1    B1Sigma+_0+
+   2.2032     18920.4545            nan            nan            nan            nan            nan
+   2.3495      7116.4773     26568.6681     20113.6364     21434.6591     26803.9773     27443.1818
+   2.4498      2727.2727     19232.6169     15511.3636     16960.2273     19389.2045     19985.7955
+   2.5010      1448.8636     16543.3203     13977.2727     15511.3636     16704.5455     17258.5227
+   2.5500       639.2045     14370.0249     12741.4773     14446.0227     14531.2500     15042.6136
+   2.6006       170.4545     13180.7496     11846.5909     12613.6364     12741.4773     13636.3636
+   2.6496         0.0000     11719.7358     11122.1591     11164.7727     11292.6136     13082.3864
+   2.7008        85.2273     10526.5539     10099.4318     10014.2045     10568.1818     12741.4773
+   2.7505       639.2045      9844.7358      9460.2273      9332.3864     10014.2045     12826.7045
+   2.8006      1065.3409      9129.2550      8778.4091      8650.5682      9332.3864     12869.3182
+   2.8504      1619.3182      8617.8914      8309.6591      8181.8182      8821.0227     12997.1591
+   2.9001      2258.5227      8276.9823      7926.1364      7840.9091      8480.1136     13380.6818
+   2.9512      3025.5682      8063.9141      7713.0682      7670.4545      8309.6591     13849.4318
+   3.0010      3750.0000      7978.6869      7670.4545      7627.8409      8224.4318     14446.0227
+   3.1012      5411.9318      8154.1872      7840.9091      7755.6818      8352.2727     16107.9545
+   3.2006      7031.2500      8622.9372      8352.2727      8224.4318      8821.0227     18025.5682
+   3.3008      8735.7955      9262.1417      8991.4773            nan      9502.8409     20113.6364
+   3.5006     10610.7955     11707.2838     10738.6364     11036.9318     11250.0000     23011.3636
+   3.7017     12613.6364     14434.5565     12741.4773     13039.7727     13295.4545     25568.1818

@@ -1,0 +1,101 @@
+# Figure 8 - Omega (spin-orbit) potential energy curves of RaSe
+# Londono & Perez-Rios, "Electronic properties of the Radium-monochalcogenides
+# RaX (X = O,S,Se) and RaO+/- ions"
+#
+# Method : MCSCF / MRCI+Q + ECP78MDF (Ra) + ECP10MDF / aug-cc-pV5Z-PP (Se), with
+#          the one- and two-electron Pauli-Breit operator diagonalised over the
+#          lowest Lambda-S states.
+# Source : author's own MRCI+SO output, SO/*_orig.txt (absolute hartree).
+#          Converted with 1 Eh = 219474.6313702 cm^-1 and referenced to the
+#          X1Sigma+_0+ minimum on the grid, E0 = -395.76700228 Eh, so the
+#          absolute energies are recoverable as E(Eh) = E0 + col/219474.6313702.
+#
+# THIS IS THE AB INITIO GRID (17 points, R = 2.60 - 3.95 A).  A 500-point
+# version exists in SO/Norm/; it is a cubic spline through these points
+# (reproduces them to 1e-4 cm^-1) and is not archived.  Note that the 500-point
+# files start at R = 2.59 A, so their first four points are spline
+# EXTRAPOLATION below the computed range, not data.
+#
+# Columns
+#   1  R              internuclear separation   [Angstrom]
+#   2  X1Sigma+_0+    [cm^-1]
+#   3  a3Pi_0+        [cm^-1]
+#   4  a3Pi_0-        [cm^-1]   -- reliable only for 2.75 <= R <= 3.40, see below
+#   5  a3Pi_1         [cm^-1]
+#   6  a3Pi_2         [cm^-1]
+#   7  A1Pi_1         [cm^-1]
+#
+# There is no B1Sigma+_0+ column: RaSe has no such file and no such row in
+# Table VII, the Lambda-S B1Sigma+ lying at 24039 cm^-1 (Table V), far above
+# this manifold.  RaO resolves seven Omega states, RaSe six.
+#
+# Spectroscopic constants: parabola fitted over +/-0.06 A about the minimum of
+# the cubic spline of the points below, reproducible from this file alone.
+# mu(226Ra-80Se) = 59.04114 amu.
+#   state          Re(A)  Re pub |   Te(cm-1)   Te pub |  we(cm-1)  we pub
+#   X1Sigma+_0+    2.759   2.764 |     -10.31      0.00 |     248.0   247.3
+#   a3Pi_0+        3.129   3.128 |    6558.37   6567.58 |     147.2   147.1
+#   a3Pi_0-        3.129       - |    6558.27       - |     146.8       -
+#   a3Pi_1         3.126   3.125 |    8011.81   8021.02 |     145.3   145.3
+#   a3Pi_2         3.127   3.126 |    7852.75   7861.96 |     144.9   144.9
+#   A1Pi_1         3.128   3.127 |    6690.99   6700.21 |     147.2   147.2
+#
+#   Every excited-state Te above sits 9.21 cm^-1 below its Table VII value, to
+#   within 0.01 cm^-1 across all four states.  That is a pure zero-point offset
+#   - Table VII located the X1Sigma+_0+ minimum slightly differently - not a
+#   disagreement about the curves: the state-to-state spacings agree to better
+#   than 0.1 cm^-1, as do Re (<= 0.005 A) and we (<= 0.7 cm^-1).
+#
+# ROOT-TRACKING PROBLEM IN a3Pi_0- (column 4) - please check before archiving.
+#   The 0- component of a 3Pi state should stay nearly degenerate with its 0+
+#   partner.  Over 2.75 <= R <= 3.40 A it does: the two agree to 0.3-1.9 cm^-1,
+#   which is the expected behaviour.  Outside that window column 4 tracks a
+#   different state entirely:
+#
+#     R (A)     |0- minus 0+|   |0- minus X1Sigma+_0+|   |0- minus A1Pi_1|
+#      2.60         1537.7                 12909.4                9.0
+#      2.65          780.9                 12436.3               12.5
+#      2.70           48.4                 11722.6                5.4
+#      2.75            1.9                 10460.9              133.7   <- ok
+#      2.80            1.8                  9211.3              134.9   <- ok
+#      2.85            0.3                  8111.8              134.1   <- ok
+#      2.90            0.4                  7084.2              132.5   <- ok
+#      2.95            0.5                  6114.5              131.6   <- ok
+#      3.00            0.6                  5204.9              131.2   <- ok
+#      3.10            0.8                  3699.1              132.1   <- ok
+#      3.20            1.1                  2276.7              134.8   <- ok
+#      3.30            1.4                  1145.1              138.8   <- ok
+#      3.40            1.8                   301.9              143.8   <- ok
+#      3.50          263.6                     2.3              149.7
+#      3.60          593.9                     3.0              156.3
+#      3.75          835.5                     3.8              166.7
+#      3.95          960.9                     5.1              181.8
+#
+#   For R <= 2.70 A column 4 sits within 5-13 cm^-1 of A1Pi_1, and for
+#   R >= 3.50 A within 2-5 cm^-1 of X1Sigma+_0+.  Omega = 0-, 0+ and 1 are
+#   different symmetry species: they may cross at a point, but nothing couples
+#   them, so tracking one another over several consecutive geometries is a
+#   labelling problem, not physics.  The values are left in place because they
+#   are genuine eigenvalues of the Pauli-Breit matrix - only the assignment to
+#   a3Pi_0- is in doubt outside 2.75-3.40 A.
+#
+# Extracted 2026-09-25
+#
+# R(Angstrom)    X1Sigma+_0+        a3Pi_0+        a3Pi_0-         a3Pi_1         a3Pi_2         A1Pi_1
+   2.6000      1329.4215     15776.5410     14238.7920     16059.6830     15892.9152     14247.7510
+   2.6500       503.7996     13720.9965     12940.1321     13879.6701     13718.7776     12952.5895
+   2.7000       155.3463     11926.3941     11877.9868     12097.5865     11924.5308     11883.4254
+   2.7500         0.0000     10462.7639     10460.8764     11045.3264     10982.4645     10594.6243
+   2.8000        74.4897      9287.5716      9285.7961     10275.0363     10182.0668      9420.6479
+   2.8500       422.8201      8534.9602      8534.6639      9779.5833      9652.4460      8668.7300
+   2.9000       730.2821      7814.8069      7814.4403      9165.5591      9023.0059      7946.9701
+   2.9500      1167.4646      7282.4009      7281.9444      8684.8175      8535.1226      7413.5260
+   3.0000      1706.9727      6912.4698      6911.9102      8341.1773      8187.7777      7043.1406
+   3.1000      2873.8820      6573.7963      6572.9887      8023.9420      7865.9664      6705.1300
+   3.2000      4373.7760      6651.6242      6650.5203      8108.2225      7945.7125      6785.3326
+   3.3000      5886.4523      7033.0251      7031.5809      8491.8268      8323.8124      7170.3898
+   3.4000      7327.6763      7631.3656      7629.5374      9091.4535      8916.9338      7773.3481
+   3.5000      8377.1272      8638.4952      8374.8622      9838.8985      9656.9672      8524.5154
+   3.6000      9181.4951      9772.3713      9178.5125     10646.5761     10457.9794      9334.8267
+   3.7500     10575.5036     11407.1940     10571.6782     12043.6858     11842.4582     10738.3823
+   3.9500     12520.6458     13476.3986     12515.5409     13994.3170     13774.9807     12697.3514
